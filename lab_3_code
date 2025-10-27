@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv(r"C:\Users\itsme\Downloads\lab_3_data_real_fr.csv")
+
+# make seconds column from your 'times_ms'
+df['time_s'] = df['times_ms'] / 1000.0
+
+plt.figure(figsize=(10,5))
+plt.plot(df['time_s'], df['pot_raw'], label='Potentiometer (heater power)', color='red')
+plt.plot(df['time_s'], df['therm_raw'], label='Thermistor (temperature)', color='blue')
+plt.xlabel("Time (s)")
+plt.ylabel("Value (AU)")
+plt.title("Heater Control vs Thermistor Response")
+plt.legend()
+plt.show()
